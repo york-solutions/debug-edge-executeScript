@@ -1,8 +1,21 @@
 browser.browserAction.onClicked.addListener(function(tab){
   console.log('browserAction clicked');
+
   browser.tabs.executeScript(tab.id, {
-    code: "alert('foobar');"
+    code: "alert('executeScript(tab.id, code)');"
   }, function(){
-    console.log('executeScript done');
+    console.log('executeScript(tab.id, code) done');
+  });
+
+  browser.tabs.executeScript(null, {
+    code: "alert('executeScript(null, code)');"
+  }, function(){
+    console.log('executeScript(null, code) done');
+  });
+
+  browser.tabs.executeScript({
+    code: "alert('executeScript(code)');"
+  }, function(){
+    console.log('executeScript(code) done');
   });
 });
