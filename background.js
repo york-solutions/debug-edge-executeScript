@@ -2,7 +2,7 @@ browser.browserAction.onClicked.addListener(function(tab){
   console.log('browserAction clicked');
 
   browser.tabs.executeScript(tab.id, {
-    code: "alert('executeScript(tab.id, code)');"
+    code: "document.body.style.backgroundColor = 'red';"
   }, function(){
     console.log('executeScript(tab.id, code) done');
   });
